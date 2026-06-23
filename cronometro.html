@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cronometro</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="body-crono">
+    <div class="title">
+      <h1>CRONOMETRO</h1>
+    </div>
+    <div class="timer">
+      <div class="minuti-decine counter">0</div>
+      <div class="minuti-unità counter">0</div>
+      <p>:</p>
+      <div class="secondi-decine counter">0</div>
+      <div class="secondi-unità counter">0</div>
+      <p>:</p>
+      <div class="decimi counter">0</div>
+      <div class="centesimi counter">0</div>
+    </div>
+    <div class="buttons">
+      <button class="reset-button"><img src="img/reset.png" alt="" /></button>
+      <button class="stop-button">
+        <img src="img/go-button.png" alt="" />
+      </button>
+      <button class="mic-button"><img src="img/mic.png" alt="" /></button>
+    </div>
+    <div class="menu">
+      <button class="ora-button"><a href="orario.html">Ora</a></button>
+      <button class="crono-button" id="timer-active"><a href="cronometro.html">Cronometro</a></button>
+      <button class="timer-button"><a href="timer.html">Timer</a></button>
+      <button class="counter-button"><a href="contatore.html">Contatore</a></button>
+    </div>
+    <script src="/static/crono.js"></script>
+  </body>
+</html>

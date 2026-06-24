@@ -141,29 +141,6 @@ body {
 }
 
 
-.preset-timer {
-  grid-area: preset-timer;
-  align-items: center;
-  justify-content: space-around;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 20px;
-  font-size: 150%;
-  font-family: "Anton", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.preset {
-  background-color: #2087f3;
-  width: clamp(45px, 15vw, 80px);
-  height: clamp(45px, 15vw, 80px);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .buttons {
   grid-area: buttons;
   display: grid;

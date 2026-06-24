@@ -8,6 +8,8 @@ const seconds_uni = document.querySelector(".secondi-unità"); // untià dei sec
 const start_button_image = document.querySelector(".stop-button img"); // bottone per avvio/stop del cronometro
 const start_button = document.querySelector(".stop-button");
 const reset_button = document.querySelector(".reset-button");
+const full_screen_button = document.querySelector(".fullscreen")
+let elem = document.documentElement;
 
 let start_time; // tempo di avvio del timer
 let timer_interval;
@@ -73,4 +75,16 @@ function azzera_cronometro() {
 
 reset_button.addEventListener("click", azzera_cronometro);
 
+function set_full_screen() {
+  let elem = document.documentElement;
+  if (!document.fullscreenElement) {
+    elem.requestFullscreen()
+    full_screen_button.src = "img/exit_full_screen.png"
+  }
+  else {
+    document.exitFullscreen()
+    full_screen_button.src = "img/full_screen.png"
+  }
+}
 
+full_screen_button.addEventListener("click", set_full_screen)

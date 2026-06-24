@@ -58,7 +58,25 @@ body {
   font-style: normal;
   letter-spacing: 8px;
   position: relative;
+  font-size: 2rem;
 }
+
+.fullscreen {
+  position: absolute;
+  width: clamp(3%, 6%, 10%);
+  height: auto;
+  top: 1px;
+  right: 1px;
+}
+
+.body-crono .fullscreen {
+  width: clamp(3%, 6%, 10%);
+}
+.fullscreen img {
+  width: 100%;
+  height: auto;
+}
+
 .body-timer .title {
   font-size: 3rem;
 }
@@ -85,6 +103,13 @@ body {
   justify-content: space-around;
   align-items: center;
   font-size: clamp(3rem, 30vw, 150px);
+}
+.contatore .counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40vw
+
 }
 
 .obbiettivo {
@@ -114,6 +139,7 @@ body {
   text-align: center;
   font-variant-numeric: tabular-nums;
 }
+
 
 .preset-timer {
   grid-area: preset-timer;
@@ -154,7 +180,8 @@ body {
   height: clamp(90px, 35vw, 160px);
 }
 
-.buttons button {
+.buttons button,
+.fullscreen {
   border: none;
   background: none;
   cursor: pointer;
@@ -200,8 +227,12 @@ body {
 .menu {
   grid-area: menu;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-around;
+}
+
+.body-ora .menu {
+  align-items: center;
 }
 
 .menu button {

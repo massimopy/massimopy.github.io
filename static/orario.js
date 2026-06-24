@@ -77,7 +77,7 @@ function vocal_listner() {
       let testoTrascritto = event.results[indiceUltimoRisultato][0].transcript;
       testoTrascritto = testoTrascritto.toLowerCase().trim();
       console.log("Hai detto: " + testoTrascritto);
-      if (domande.includes(testoTrascritto)) {
+      if (domande.some(function(d) { return testoTrascritto.includes(d); }))  {
         vocal_speaker();
       }
     };

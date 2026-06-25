@@ -53,6 +53,7 @@ function set_full_screen() {
 full_screen_button.addEventListener("click", set_full_screen);
 
 let domande = ["che ore sono", "che ora è", "che ora e", "dimmi il tempo"];
+let richieste = ["puoi", "perfavore"];
 
 function vocal_listner() {
   const SpeechRecognition =
@@ -77,15 +78,23 @@ function vocal_listner() {
       let testoTrascritto = event.results[indiceUltimoRisultato][0].transcript;
       testoTrascritto = testoTrascritto.toLowerCase().trim();
       console.log("Hai detto: " + testoTrascritto);
-      if (domande.some(function(d) { return testoTrascritto.includes(d); }))  {
+      if (
+        richieste.some(function (d) {
+          return testoTrascritto.includes(d);
+        })
+      ) {
+        vocale_senteces("é l'ora che di compri un orologio");
+      } else if (
+        domande.some(function (d) {
+          return testoTrascritto.includes(d);
+        })
+      ) {
         vocal_speaker();
       }
     };
     recognition.addEventListener("end", function () {
       if (recognition !== null) {
-
-      
-      recognition.start();
+        recognition.start();
       }
     });
 
@@ -96,7 +105,7 @@ function vocal_listner() {
 function vocal_speaker() {
   let secondi = parseInt(seconds_dec.textContent + seconds_uni.textContent) + 2;
   let messaggio = new SpeechSynthesisUtterance(
-    `sono le ${hours_dec.textContent + hours_uni.textContent} e ${minutes_dec.textContent + minutes_uni.textContent} e ${secondi} secondi`,
+    `sono le ${parseInt(hours_dec.textContent + hours_uni.textContent)} e ${parseInt(minutes_dec.textContent + minutes_uni.textContent)} e ${secondi} secondi`,
   );
 
   messaggio.lang = "it-IT";
@@ -113,3 +122,19 @@ function vocal_speaker() {
 }
 
 mic_button.addEventListener("click", vocal_listner);
+
+function vocale_senteces(text) {
+  let messaggio = new SpeechSynthesisUtterance(text);
+
+  messaggio.lang = "it-IT";
+  messaggio.rate = 1.4;
+  messaggio.pitch = -30.0;
+
+  let vociDisponibili = window.speechSynthesis.getVoices();
+
+  // Cerchiamo la voce con la funzione classica anziché la arrow function
+  let voceItaliana = vociDisponibili.find(function (voce) {
+    return voce.lang.indexOf("it") === 0;
+  });
+  window.speechSynthesis.speak(messaggio);
+}

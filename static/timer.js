@@ -37,6 +37,7 @@ function avvia_timer() {
     elapsed_time = 0;
     start_time = 0;
     timer_interval = null;
+    vocal_senteces("ooooooooooooooooooooooooooooooooooooooooo");
 
     start_button_image.src = "img/go-button.png";
 
@@ -182,8 +183,7 @@ function vocal_listner() {
         })
       ) {
         gestione_avvio_timer();
-      }
-      else if (
+      } else if (
         comandi_pausa.some(function (d) {
           return testoTrascritto.includes(d);
         })
@@ -312,4 +312,20 @@ function vocal_command(testo_pronunciato) {
 
   seconds_dec.textContent = secondi[0];
   seconds_uni.textContent = secondi[1];
+}
+
+function vocal_senteces(text) {
+  let messaggio = new SpeechSynthesisUtterance(text);
+
+  messaggio.lang = "it-IT";
+  messaggio.rate = 1.4;
+  messaggio.pitch = -30.0;
+
+  let vociDisponibili = window.speechSynthesis.getVoices();
+
+  // Cerchiamo la voce con la funzione classica anziché la arrow function
+  let voceItaliana = vociDisponibili.find(function (voce) {
+    return voce.lang.indexOf("it") === 0;
+  });
+  window.speechSynthesis.speak(messaggio);
 }
